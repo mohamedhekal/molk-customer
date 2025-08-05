@@ -1,0 +1,2 @@
+/Volumes/DATA/molk_app/Molk_UserApp/android/app/.cxx/RelWithDebInfo/1e582p2n/arm64-v8a/CMakeFiles/edit_cache.dir
+/Volumes/DATA/molk_app/Molk_UserApp/android/app/.cxx/RelWithDebInfo/1e582p2n/arm64-v8a/CMakeFiles/rebuild_cache.dir

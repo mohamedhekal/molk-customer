@@ -1,0 +1,1 @@
+/Volumes/DATA/molk_app/Molk_UserApp/build/app/intermediates/cxx/RelWithDebInfo/1e582p2n/obj/armeabi-v7a
