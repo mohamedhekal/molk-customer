@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "661243235369",
+    "project_id": "molk-app-store",
+    "storage_bucket": "molk-app-store.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661243235369:android:49c596d0a6226d6cd86038",
+        "android_client_info": {
+          "package_name": "com.molk.Deliver"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDe4KsKGN4tJmkL3RZ9GA5wv4q9mycV3i4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661243235369:android:0d54b01788b8e7f9d86038",
+        "android_client_info": {
+          "package_name": "com.molk.customer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDe4KsKGN4tJmkL3RZ9GA5wv4q9mycV3i4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661243235369:android:5d3ce0f6645ec574d86038",
+        "android_client_info": {
+          "package_name": "com.molk.deliver"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDe4KsKGN4tJmkL3RZ9GA5wv4q9mycV3i4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661243235369:android:69ba02e8f4825ae5d86038",
+        "android_client_info": {
+          "package_name": "com.molk.merchant"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDe4KsKGN4tJmkL3RZ9GA5wv4q9mycV3i4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
