@@ -50,29 +50,42 @@ Future<void> main() async {
     return true;
   };*/
 
-  if (GetPlatform.isWeb) {
-    await Firebase.initializeApp(
-      options: const FirebaseOptions(
-        apiKey: "AIzaSyABYm-lbIq2slZLmiPu2P7r1v09ck3bcek",
-        authDomain: "molk-app-store.firebaseapp.com",
-        projectId: "molk-app-store",
-        storageBucket: "molk-app-store.firebasestorage.app",
-        messagingSenderId: "661243235369",
-        appId: "1:661243235369:web:204918c163dd69fed86038",
-        measurementId: "G-TNX9TW5Z15",
-      ),
-    );
-  } else if (GetPlatform.isAndroid) {
-    await Firebase.initializeApp(
-      options: const FirebaseOptions(
-        apiKey: "AIzaSyCc3OCd5I2xSlnftZ4bFAbuCzMhgQHLivA",
-        appId: "1:491987943015:android:a6fb4303cc4bf3d18f1ec2",
-        messagingSenderId: "491987943015",
-        projectId: "stackmart-500c7",
-      ),
-    );
-  } else {
-    await Firebase.initializeApp();
+  try {
+    if (GetPlatform.isWeb) {
+      await Firebase.initializeApp(
+        options: const FirebaseOptions(
+          apiKey: "AIzaSyABYm-lbIq2slZLmiPu2P7r1v09ck3bcek",
+          authDomain: "molk-app-store.firebaseapp.com",
+          projectId: "molk-app-store",
+          storageBucket: "molk-app-store.firebasestorage.app",
+          messagingSenderId: "661243235369",
+          appId: "1:661243235369:web:204918c163dd69fed86038",
+          measurementId: "G-TNX9TW5Z15",
+        ),
+      );
+    } else if (GetPlatform.isAndroid) {
+      await Firebase.initializeApp(
+        options: const FirebaseOptions(
+          apiKey: "AIzaSyABYm-lbIq2slZLmiPu2P7r1v09ck3bcek",
+          authDomain: "molk-app-store.firebaseapp.com",
+          projectId: "molk-app-store",
+          storageBucket: "molk-app-store.firebasestorage.app",
+          messagingSenderId: "661243235369",
+          appId: "1:661243235369:web:204918c163dd69fed86038",
+          measurementId: "G-TNX9TW5Z15",
+        ),
+      );
+    } else {
+      await Firebase.initializeApp();
+    }
+  } catch (e) {
+    // If Firebase is already initialized, ignore the error
+    if (e.toString().contains('duplicate-app') ||
+        e.toString().contains('already exists')) {
+      print('Firebase already initialized, continuing...');
+    } else {
+      rethrow;
+    }
   }
 
   Map<String, Map<String, String>> languages = await di.init();
@@ -80,8 +93,8 @@ Future<void> main() async {
   NotificationBodyModel? body;
   try {
     if (GetPlatform.isMobile) {
-      final RemoteMessage? remoteMessage = await FirebaseMessaging.instance
-          .getInitialMessage();
+      final RemoteMessage? remoteMessage =
+          await FirebaseMessaging.instance.getInitialMessage();
       if (remoteMessage != null) {
         body = NotificationHelper.convertNotification(remoteMessage.data);
       }
@@ -128,7 +141,8 @@ class _MyAppState extends State<MyApp> {
       }
 
       if (!AuthHelper.isLoggedIn() &&
-          !AuthHelper.isGuestLoggedIn() /*&& !ResponsiveHelper.isDesktop(Get.context!)*/ ) {
+          !AuthHelper
+              .isGuestLoggedIn() /*&& !ResponsiveHelper.isDesktop(Get.context!)*/) {
         await Get.find<AuthController>().guestLogin();
       }
 
@@ -138,8 +152,7 @@ class _MyAppState extends State<MyApp> {
       }
 
       Get.find<SplashController>().getConfigData(
-        loadLandingData:
-            (GetPlatform.isWeb &&
+        loadLandingData: (GetPlatform.isWeb &&
             AddressHelper.getUserAddressFromSharedPref() == null),
         fromMainFunction: true,
       );
@@ -199,19 +212,16 @@ class _MyAppState extends State<MyApp> {
                               child: Stack(
                                 children: [
                                   widget!,
-
                                   GetBuilder<SplashController>(
                                     builder: (splashController) {
                                       if (!splashController.savedCookiesData &&
                                           !splashController
                                               .getAcceptCookiesStatus(
-                                                splashController.configModel !=
-                                                        null
-                                                    ? splashController
-                                                          .configModel!
-                                                          .cookiesText!
-                                                    : '',
-                                              )) {
+                                            splashController.configModel != null
+                                                ? splashController
+                                                    .configModel!.cookiesText!
+                                                : '',
+                                          )) {
                                         return ResponsiveHelper.isWeb()
                                             ? const Align(
                                                 alignment:
